@@ -1,60 +1,41 @@
 import React, { Component } from "react";
+import "./style.css";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      form: {
-        name: "",
-        email: "",
-        password: "",
-        error: "",
-      },
-    };
-    this.cadastrar = this.cadastrar.bind(this);
+    this.state = {};
+
+    this.frases = [
+      "Siga os bons e aprenda com eles.",
+      "O bom-senso vale mais do que muito conhecimento.",
+      "O riso é a menor distância entre duas pessoas.",
+      "Deixe de lado as preocupações e seja feliz.",
+      "Realize o óbvio, pense no improvável e conquiste o impossível.",
+      "Acredite em milagres, mas não dependa deles.",
+      "A maior barreira para o sucesso é o medo do fracasso.",
+    ];
   }
 
-  cadastrar(event) {
-    const { name, email, password } = this.state;
-
-    if (name !== "" && email !== "" && password !== "") {
-      alert(`Nome; ${name} \n Email: ${email} \n Senha: ${password}`);
-    } else {
-      this.setState({ error: "Ops! parece que esta faltando algo" });
-    }
-    event.preventDefault();
-  }
   render() {
     return (
-      <div>
-        <h1>Novo usuario</h1>
-        {this.state.error && <p>{this.state.error}</p>}
-        <form onSubmit={this.cadastrar}>
-          <label>Name:</label>
-          <input
-            type="text"
-            value={this.state.form.nome}
-            onChange={(e) => this.setState({ name: e.target.value })}
-          />
-          <br />
-          <label>Email:</label>
-          <input
-            type="email"
-            value={this.state.form.email}
-            onChange={(e) => this.setState({ email: e.target.value })}
-          />
-          <br />
-          <label>Password:</label>
-          <input
-            type="password"
-            value={this.state.form.password}
-            onChange={(e) => this.setState({ password: e.target.value })}
-          />
-          <br />
-          <button type="submit">Cadastrar</button>
-        </form>
+      <div className="container">
+        <img src={require("./assets/biscoito.png")} className="img" />
+        <Botao name="Abrir biscoito" acaoBtn={this.quebraBiscoito}/>
+        <h3 className="textoFrase">Frase numero 1 aleatoria</h3>
       </div>
     );
   }
 }
+
+class Botao extends Component {
+  render() {
+    return (
+      <div>
+        <button onClick={}>{this.props.name}</button>
+      </div>
+    );
+  }
+}
+
 export default App;
